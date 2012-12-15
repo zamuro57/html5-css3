@@ -1,10 +1,17 @@
 
-img {
-  width: 100%;
-  image-rendering:optimizeQuality; 
-  -ms-interpolation-mode:bicubic;
+body {
+  padding-top: 40px;
 }
 
+img {
+  width: 100%;
+  image-rendering: optimizeQuality; 
+  -ms-interpolation-mode: bicubic;
+}
+iframe {
+  width: 100%;
+  height: auto;
+}
 .ubuntu {
   font-family: 'Ubuntu', sans-serif;
 }
@@ -162,6 +169,10 @@ section .menu a {
 }
 
 .masterheader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
   font-family: 'Open Sans', sans-serif;
   height: 40px;
   background-color: #C2C2C2;
@@ -192,6 +203,40 @@ section article header h1 {
   font-size: 1.4em;
 }
 
+.toggle-menu {
+  font-family: 'icomoon';
+  position: fixed;
+  top: 5px;
+  left: 10px;
+  display: none;
+  color: black;
+  text-decoration: none;
+  height: 30px;
+  width: 30px;
+  background-color: #B5B5B5;
+  -webkit-box-shadow: inset 0 0 30px 0 #5A5A5A,
+  0 0 1px 0 #000000;
+  box-shadow: inset 0 0 30px 0 #5A5A5A,
+  0 0 1px 0 #000000;
+  border-radius: 5px;
+  line-height: 30px;
+  text-align: center;
+  
+}
+
+#primary-menu.show,
+#navigation.show {
+  opacity: 1;
+  visibility: visible;
+  display: block;
+}
+
+.toggle-right {
+  left: auto;
+  right: 10px;
+}
+
+
 /* Large desktop */
 @media (min-width: 1200px) { 
   [class*="span"] {  margin-left: 30px; }
@@ -215,7 +260,7 @@ section article header h1 {
 @media (min-width: 768px) and (max-width: 979px) { 
   [class*="span"] { margin-left: 20px; }
   .row { margin-left: -20px; }
-  .container { width: 820px; }
+  .container { width: 724px; }
   .span1  { width: 42px;}
   .span2  { width: 104px;}
   .span3  { width: 166px;}
@@ -229,12 +274,116 @@ section article header h1 {
   .span11 { width: 662px;}
   .span12 { width: 724px;}
 }
- 
+
+
+@media screen and (orientation:portrait) and (min-width: 768px) and (max-width: 979px) {
+  
+  [class*="span"] { margin-left: 20px; }
+  .row { margin-left: -20px; }
+  .container { width: 724px; }
+  .masterheader {
+    height: auto;
+    width: 100%;
+  }
+  .span3 { width: 228px;}
+  .span6 { width: 476px;}
+  .span9 { width: 724px;}
+
+  #navigation {
+    display           : none;
+    opacity           : 0;
+    visibility        : visible;
+    width             : 220px;
+    height            : 100%;
+    position          : fixed;
+    top               : 40px;
+    left              : -20px;
+    background-color  : #8E8E8E;
+    box-shadow        : 1px 0 2px 0 #3B3B3B;
+    -webkit-transition: all 500ms ease;
+    -moz-transition   : all 500ms ease;
+    -o-transition     : all 500ms ease;
+    -ms-transition    : all 500ms ease;
+    transition        : all 500ms ease;
+  }
+  #primary-menu {
+    clear             : both;
+    float             : none;
+    width             : 100%;
+    display           : none;
+    opacity           : 0;
+    visibility        : visible;
+    margin-left       : 0;
+    -webkit-transition: all 500ms ease;
+    -moz-transition   : all 500ms ease;
+    -o-transition     : all 500ms ease;
+    -ms-transition    : all 500ms ease;
+    transition        : all 500ms ease;
+  }
+  #primary-menu li {
+    float: none;
+  }
+  .toggle-menu {
+    display: block;
+  }
+  .site-title {
+    position: relative;
+    left: 40px;
+  }
+}
+
 /* Landscape phone to portrait tablet */
-@media (max-width: 767px) { 
+@media (max-width: 767px)  { 
   .row { margin-left: 0px; }
-  .container { width: 96%; }
-  [class*="span"] { width: 100%; margin-left: 0; }
+  .container { width: 96%;}
+  [class*="span"] { width: 100%; margin-left: 0; min-width: 300px; }
+
+  .masterheader {
+    height: auto;
+  }
+
+  #navigation {
+    display: none;
+    opacity: 0;
+    visibility: visible;
+    width: 220px;
+    height: 100%;
+    position: fixed;
+    top: 40px;
+    left: 0;
+    background-color: #8E8E8E;
+    box-shadow: 1px 0 2px 0 #3B3B3B;
+    -webkit-transition: all 500ms ease;
+    -moz-transition: all 500ms ease;
+    -o-transition: all 500ms ease;
+    -ms-transition: all 500ms ease;
+    transition: all 500ms ease;
+    behavior: url(pie/PIE.htc);
+  }
+  #primary-menu {
+    display: none;
+    opacity: 0;
+    visibility: visible;
+    width: 105%;
+    margin-left: -20px;
+    -webkit-transition: all 500ms ease;
+    -moz-transition: all 500ms ease;
+    -o-transition: all 500ms ease;
+    -ms-transition: all 500ms ease;
+    transition: all 500ms ease;
+    behavior: url(pie/PIE.htc);
+  }
+  .toggle-menu {
+    display: block;
+  }
+  .site-title {
+    position: relative;
+    left: 40px;
+  }
+
+  #primary-menu li {
+    float: none;
+  }
 }
  
 /* Landscape phones and down */
